@@ -1,3 +1,11 @@
+// Enemies our player must avoid
+const players = document.getElementById("players");
+const allPlayer = document.getElementsByClassName("playerList");
+let playerlists = [...allPlayer];
+
+
+
+
 var Enemy = function(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -43,10 +51,25 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.clearRect(0, 0, 505, 606);
 };
 
+for(const playerlist of playerlists){
+  playerlist.addEventListener("click", selectPlayer);
+}
+function selectPlayer(){
+//  console.log(selectedPlayer);
+  var selectedPlayer = new Image();
+  Player.sprite = selectedPlayer;
+  Player.prototype.render = function() {
+    ctx.drawImage(selectedPlayer, this.x, this.y);
+  };
+  selectedPlayer.src = `images/${this.type}.png`;
+  players.style.display="none";
+}
 
 Player.prototype.handleInput = function(keyCode) {
+
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
