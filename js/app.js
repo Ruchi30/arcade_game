@@ -1,4 +1,6 @@
 // Enemies our player must avoid
+let tileWidth = 101;
+let tileHeight = 75;
 const players = document.getElementById("players");
 const allPlayer = document.getElementsByClassName("playerList");
 let playerlists = [...allPlayer];
@@ -69,7 +71,18 @@ function selectPlayer(){
 }
 
 Player.prototype.handleInput = function(keyCode) {
-
+  if(keyCode === 'up' && this.y > 0) {
+    this.y = this.y - tileHeight;
+  }
+  if(keyCode === 'down' && this.y < 400) {
+    this.y = this.y + tileHeight;
+  }
+  if(keyCode === 'right' && this.x < 400) {
+    this.x = this.x + tileWidth;
+  }
+  if(keyCode === 'left' && this.x > 0) {
+    this.x = this.x - tileWidth;
+  }
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
