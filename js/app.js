@@ -1,6 +1,6 @@
 // Enemies our player must avoid
-let tileWidth = 101;
-let tileHeight = 75;
+let tileWidth = 76;
+let tileHeight = 60;
 const players = document.getElementById("players");
 const allPlayer = document.getElementsByClassName("playerList");
 let playerlists = [...allPlayer];
@@ -23,7 +23,7 @@ var Enemy = function(y) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     this.x = Math.round(this.x + (this.random + 1 * dt));
-    if(this.x > 600) {
+    if(this.x > 454) {
         this.x = 0;
         this.random = Math.floor(Math.random() * 3) + 1;
     }
@@ -43,8 +43,8 @@ Enemy.prototype.render = function() {
 
 
 var Player = function() {
-  this.x = 200;
-  this.y = 420;
+  this.x = 140;
+  this.y = 315;
   this.sprite = 'images/char-boy.png';
 };
 
@@ -74,10 +74,10 @@ Player.prototype.handleInput = function(keyCode) {
   if(keyCode === 'up' && this.y > 0) {
     this.y = this.y - tileHeight;
   }
-  if(keyCode === 'down' && this.y < 400) {
+  if(keyCode === 'down' && this.y < 280) {
     this.y = this.y + tileHeight;
   }
-  if(keyCode === 'right' && this.x < 400) {
+  if(keyCode === 'right' && this.x < 280) {
     this.x = this.x + tileWidth;
   }
   if(keyCode === 'left' && this.x > 0) {
@@ -86,7 +86,7 @@ Player.prototype.handleInput = function(keyCode) {
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [new Enemy(70), new Enemy(140), new Enemy(210)];
+var allEnemies = [new Enemy(35), new Enemy(90), new Enemy(150)];
 // Place the player object in a variable called player
 var player = new Player();
 // This listens for key presses and sends the keys to your
