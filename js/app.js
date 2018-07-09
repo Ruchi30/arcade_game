@@ -1,10 +1,12 @@
 // Enemies our player must avoid
 let tileWidth = 76;
 let tileHeight = 25;
+let score = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png'
 const players = document.getElementById("players");
 const allPlayer = document.getElementsByClassName("playerList");
+let scoreContainer = document.querySelector("#score");
 let playerlists = [...allPlayer];
 
 
@@ -50,8 +52,10 @@ class Player extends arcade{
   }
 
   update(dt) {
+    scoreContainer.textContent = score;
     if(this.y <= 0) {
-        this.y = 320;
+      this.y = 320
+      score += 5;
     }
   }
 
@@ -74,8 +78,8 @@ class Player extends arcade{
 class ArcadeFeatures {
   constructor(){}
   addEnemies(){
-    const enemiesX = [0, 0, 0, -30, -50, -80];
-    const enemiesY = [35, 90, 150, 45, 75, 120];
+     const enemiesX = [0, 0, 0, -30, -50, -80];
+     const enemiesY = [35, 90, 150, 45, 75, 120];
     for(var i=0; i <= enemiesX.length; i++){
       allEnemies.push(new Enemy(enemiesX[i], enemiesY[i]));
       console.log(allEnemies);
@@ -112,11 +116,12 @@ document.addEventListener('keyup', function(e) {
 });
 
 playerlists.forEach(function(playerlist) {
-  //playerlist.removeClass("selected");
+  playerlist.classList.remove("selected");
   playerlist.addEventListener("click", function(e){
     playerSprite = e.target.getAttribute('src');
     player.sprite = playerSprite;
-    playerlist.addClass("selected");
-    //players.style.display="none";
+    playerlist.classList.add("selected");
+    playerlist.previousElementSibling.classList.remove("selected");
+    playerlist.nextElementSibling.classList.remove("selected");
   });
 });

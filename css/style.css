@@ -2,17 +2,52 @@ body {
     text-align: center;
 }
 ul {
-	width: 100%;
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+}
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arcadeGame {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+	margin: 0 auto;
+}
+#players {
 	padding: 0;
 	margin: 0;
 }
-li {
-	list-style: none;
-	display: inline-block;
+#players li.playerList {
 	padding: 0;
 	margin: 0;
 	background: #ccc;
 	border-radius: 90px 90px 90px 90px;
 	padding: 10px;
 	margin-right: 10px;
+}
+#players li.playerList.selected{
+	background: red;
+}
+.score{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    list-style: none;
+}
+.score li {
+    width: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
