@@ -59,7 +59,7 @@ class Player extends arcade{
   update(dt) {
     scoreContainer.textContent = score;
     if(this.y <= 0) {
-      this.y = 320
+      this.y = 320;
       score += 5;
     }
   }
@@ -90,8 +90,8 @@ class Player extends arcade{
 class ArcadeFeatures {
   constructor(){}
   addEnemies(){
-    const enemiesX = [0, 0, 0, -30, -50, -80];
-    const enemiesY = [35, 90, 150, 45, 75, 120];
+    const enemiesX = [0, 0, 0];
+    const enemiesY = [35, 90, 150];
     for(var i=0; i <= enemiesX.length; i++){
       allEnemies.push(new Enemy(enemiesX[i], enemiesY[i]));
     }
@@ -119,6 +119,7 @@ class ArcadeFeatures {
     this.resetTimer();
     player.x = 141;
     player.y = 305;
+    score = 0;
   }
 }
 
