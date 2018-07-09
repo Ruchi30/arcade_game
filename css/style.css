@@ -37,17 +37,12 @@ li {
 #players li.playerList.selected{
 	background: red;
 }
-.score{
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 600px;
-    list-style: none;
+.gameDetails{
+	width: 100%;
 }
-.score li {
-    width: 22%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.score {
+    width: 15%;
+}
+.timer {
+    width: 30%;
 }

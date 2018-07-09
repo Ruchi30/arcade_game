@@ -2,10 +2,15 @@
 let tileWidth = 76;
 let tileHeight = 25;
 let score = 0;
+let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png'
 const players = document.getElementById("players");
 const allPlayer = document.getElementsByClassName("playerList");
+let timer = document.querySelector("#timer");
+let sec = 0;
+let min = 0;
+let timerInterval;
 let scoreContainer = document.querySelector("#score");
 let playerlists = [...allPlayer];
 
@@ -72,37 +77,56 @@ class Player extends arcade{
     if(keyCode === 'left' && this.x > 0) {
       this.x = this.x - tileWidth;
     }
+    if(keyCode === 'up' || keyCode === 'down'|| keyCode === 'right' || keyCode === 'left'){
+      clickCounter++;
+      if(clickCounter===1){
+        console.log(clickCounter);
+        arcadeFeatures.startTimer();
+      }
+    }
   }
 }
 
 class ArcadeFeatures {
   constructor(){}
   addEnemies(){
-     const enemiesX = [0, 0, 0, -30, -50, -80];
-     const enemiesY = [35, 90, 150, 45, 75, 120];
+    const enemiesX = [0, 0, 0, -30, -50, -80];
+    const enemiesY = [35, 90, 150, 45, 75, 120];
     for(var i=0; i <= enemiesX.length; i++){
       allEnemies.push(new Enemy(enemiesX[i], enemiesY[i]));
-      console.log(allEnemies);
     }
+  }
+  startTimer(){
+    timerInterval = setInterval(function(){
+      sec++;
+      if(sec >= 60){
+        sec = 0;
+        min++;
+      }
+      timer.innerHTML = `${min} min & ${sec} sec`;
+    },1000);
+  }
+  resetTimer(){
+    clearInterval(timerInterval);
+    timer.textContent = "0 min & 0 sec";
+    sec = 0;
+    min = 0;
   }
   reset(){
     allEnemies = [];
     this.addEnemies();
+    clickCounter = 0;
+    this.resetTimer();
     player.x = 141;
     player.y = 305;
   }
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-
 let allEnemies = [];
-// Place the player object in a variable called player
 let player = new Player();
 const arcadeFeatures = new ArcadeFeatures();
 arcadeFeatures.addEnemies();
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+timer.textContent = "0 min & 0 sec";
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
@@ -125,3 +149,5 @@ playerlists.forEach(function(playerlist) {
     playerlist.nextElementSibling.classList.remove("selected");
   });
 });
+
+
