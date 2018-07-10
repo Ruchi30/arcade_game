@@ -66,9 +66,13 @@ body {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+}
+.score-panel .stars li .fa {
+    color: #ccc;
+}
+.score-panel .stars li .fa.active {
     color: #02ccba;
 }
-
 .score-panel .restart {
     float: right;
     cursor: pointer;

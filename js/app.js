@@ -13,6 +13,8 @@ let min = 0;
 let timerInterval;
 let scoreContainer = document.querySelector(".score");
 let playerlists = [...allPlayer];
+//Array for Star Rating
+const stars = document.querySelectorAll(".fa-star");
 
 
 
@@ -57,11 +59,12 @@ class Player extends arcade{
   }
 
   update(dt) {
-    scoreContainer.textContent = score;
     if(this.y <= 0) {
       this.y = 320;
       score += 5;
     }
+    scoreContainer.textContent = score;
+    arcadeFeatures.starRating();
   }
 
   handleInput(keyCode) {
@@ -80,7 +83,6 @@ class Player extends arcade{
     if(keyCode === 'up' || keyCode === 'down'|| keyCode === 'right' || keyCode === 'left'){
       clickCounter++;
       if(clickCounter===1){
-        console.log(clickCounter);
         arcadeFeatures.startTimer();
       }
     }
@@ -112,6 +114,36 @@ class ArcadeFeatures {
     sec = 0;
     min = 0;
   }
+  starRating(){
+    let count = (min*60 + sec) / score;
+    if(count > -1 && count < 5){
+      for(let i= 0; i < 3; i++){
+        if(i >= 0){
+          stars[i].classList.add("active");
+        }
+      }
+    }
+    else if(count >= 5 && count < 15 ){
+      for(let i= 0; i < 3; i++){
+        if(i > 0){
+          stars[i].classList.add("active");
+        }
+        else {
+          stars[i].classList.remove("active");
+        }
+      }
+    }
+    else if(count <= 15){
+      for(let i= 0; i < 3; i++){
+        if(i > 1){
+          stars[i].classList.add("active");
+        }
+        else {
+          stars[i].classList.remove("active");
+        }
+      }
+    }
+  }
   reset(){
     allEnemies = [];
     this.addEnemies();
@@ -120,6 +152,11 @@ class ArcadeFeatures {
     player.x = 141;
     player.y = 305;
     score = 0;
+    for(const star of stars){
+      if(star.classList.contains("active")){
+        star.classList.remove("active");
+      }
+    }
   }
 }
 
