@@ -26,7 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 600px;
+    width: 100%;
 	margin: 0 auto;
 }
 /*Styles for Player List*/
@@ -34,17 +34,26 @@ body {
 	padding: 0;
 	margin: 0;
     display: inline-block;
+    text-align: center;
+    width: 100%;
 }
 .players li.playerList {
 	padding: 0;
 	margin: 0;
 	background: #ccc;
 	border-radius: 90px 90px 90px 90px;
-	padding: 10px;
+	padding: 5px;
 	margin-right: 10px;
     display: inline-block;
     list-style: none;
+    width: calc((100% - 70px) / 4);
 }
+.players li.playerList:last-of-type {
+    margin-right: 0;
+ }
+.players li.playerList img{
+    max-width: 100%;
+ }
 .players li.playerList.selected{
 	background: red;
 }
@@ -52,15 +61,15 @@ body {
 .score-panel {
     text-align: left;
     width: 90%;
-    margin-bottom: 10px;
-    font-size: 1.3em;
+    margin-bottom: -40px;
+    font-size: 1em;
 }
 
 .score-panel .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 5px;
 }
 
 .score-panel .stars li {
@@ -88,4 +97,57 @@ body {
     width: 100%;
     text-align: center;
     font-size: 1.2rem;
+}
+/*******mobile button style******/
+.btnMobile {
+	width: 100%;
+  	margin: 0 auto;
+  	text-align: center;
+}
+
+.btnMobile button {
+	width: 40px;
+    height: 40px;
+    line-height: 30px;
+    font-size: 2.5em;
+    border-radius: 50%;
+    background-color: transparent;
+    border-style: none;
+    margin: 2px 15px;
+}
+
+.btnMobile button:focus {
+    outline: none;
+}
+
+.hidden {
+	display: none;
+}
+
+/** media queries*/
+@media (min-width: 680px) {
+    .modal-content {
+        width: 500px;
+    }
+
+    .players {
+        width: 600px;
+    }
+    .players li.playerList {
+		padding: 15px;
+	    width: calc((100% - 150px) / 4);
+    }
+
+    .score-panel{
+        width: 500px;
+        font-size: 1.2em;
+    }
+
+    .score-panel .stars {
+	    margin: 0 15px;
+	}
+
+    h1 {
+        font-size: 3rem;
+    }
 }
