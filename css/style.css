@@ -86,7 +86,12 @@ body {
     float: right;
     cursor: pointer;
 }
-
+.score-panel .play {
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
 .score-panel .timer {
     float: right;
     margin-right: 15px;

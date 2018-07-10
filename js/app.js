@@ -3,7 +3,7 @@ let tileWidth = 76;
 let tileHeight = 25;
 let score = 0;
 let value = 0;
-let lifeVal = 3;
+let lifeVal = 0;
 let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png';
@@ -18,6 +18,7 @@ let timerInterval;
 let scoreContainer = document.querySelector(".score");
 let lifeContainer = document.querySelector(".life");
 let refresh = document.querySelector(".restart");
+let btnPlay = document.querySelector(".btnPlay");
 const allPlayer = document.getElementsByClassName("playerList");
 let playerlists = [...allPlayer];
 //Array for Star Rating
@@ -98,6 +99,7 @@ class Player extends arcade{
       if(clickCounter===1){
         arcadeFeatures.startTimer();
       }
+      arcadeFeatures.startGame()
     }
   }
 }
@@ -187,6 +189,9 @@ class ArcadeFeatures {
       timer.innerHTML = `${min} Minu & ${sec} Sec`;
     },1000);
   }
+  stopTimer(){
+    clearInterval(timerInterval);
+  }
   resetTimer(){
     clearInterval(timerInterval);
     timer.textContent = "0 Min & 0 Sec";
@@ -241,6 +246,27 @@ class ArcadeFeatures {
       btnMobile.classList.toggle("hidden");
     }
   }
+  stopGame(){
+    if(btnPlay.classList.contains("fa-play-circle")){
+      if(clickCounter > 0){
+        arcadeFeatures.startTimer();
+      }
+    btnPlay.classList.toggle('fa-pause-circle');
+    btnPlay.classList.toggle('fa-play-circle');
+    }
+    else {
+      arcadeFeatures.stopTimer();
+      btnPlay.classList.toggle('fa-play-circle');
+      btnPlay.classList.toggle('fa-pause-circle');
+    }
+  }
+  startGame(){
+    if(btnPlay.classList.contains("fa-play-circle") && clickCounter > 0){
+      arcadeFeatures.startTimer();
+      btnPlay.classList.toggle('fa-pause-circle');
+      btnPlay.classList.toggle('fa-play-circle');
+    }
+  }
   reset(){
     allEnemies = [];
     this.addEnemies();
@@ -292,6 +318,8 @@ playerlists.forEach(function(playerlist) {
 refresh.addEventListener("click",function(){
   arcadeFeatures.reset();
 });
+
+btnPlay.addEventListener("click",arcadeFeatures.stopGame);
 
 btnMobile.addEventListener("click",function(e){
   if (e.target.classList.contains("up")) {
