@@ -3,7 +3,7 @@ let tileWidth = 76;
 let tileHeight = 25;
 let score = 0;
 let value = 0;
-let lifeVal = 0;
+let lifeVal = 3;
 let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png';
@@ -48,12 +48,17 @@ class Enemy extends arcade{
         this.random = Math.floor(Math.random() * 3) + 1;
     }
   }
-
   checkCollisions(){
     let xPos = player.x >= this.x  -50 && player.x <= this.x + 50;
     let yPos = player.y >= this.y  -20 && player.y <= this.y + 20;
     if(xPos && yPos){
-      arcadeFeatures.reset();
+      if(lifeVal > 0){
+        this.x = 0;
+        lifeVal--;
+      }
+      else {
+        arcadeFeatures.reset();
+      }
     }
   }
 }
@@ -130,7 +135,7 @@ class Gem extends arcade{
 class Life extends arcade{
   constructor(x, y, spriteImg){
     super(x = tileWidth * Math.floor(Math.random() * 4), y = tileHeight * Math.floor(Math.random() * 6), spriteImg = lifeSprite);
-    this.random = Math.floor(Math.random() * 3) + 1;
+    this.random = Math.floor(Math.random() * 3) + 10;
   }
 
   update() {
@@ -142,7 +147,9 @@ class Life extends arcade{
     let yPos = player.y >= this.y  -20 && player.y <= this.y + 20;
     if(xPos && yPos){
       this.update();
-      lifeVal++;
+      if(lifeVal < 3){
+        lifeVal++;
+      }
     }
   }
 }

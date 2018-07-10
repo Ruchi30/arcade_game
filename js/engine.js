@@ -161,7 +161,7 @@ var Engine = (function(global) {
         });
         player.render();
         gem.render();
-        if (score>5){
+        if (score >15 && lifeVal < 3){
             life.render();
         }
     }
