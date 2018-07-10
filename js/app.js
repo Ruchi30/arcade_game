@@ -175,12 +175,12 @@ class ArcadeFeatures {
         sec = 0;
         min++;
       }
-      timer.innerHTML = `${min} Minute and ${sec} Second`;
+      timer.innerHTML = `${min} Minu & ${sec} Sec`;
     },1000);
   }
   resetTimer(){
     clearInterval(timerInterval);
-    timer.textContent = "0 Minute and 0 Second";
+    timer.textContent = "0 Min & 0 Sec";
     sec = 0;
     min = 0;
   }
