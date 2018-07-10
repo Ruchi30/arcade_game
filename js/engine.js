@@ -82,6 +82,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.checkCollisions();
         });
+        gem.checkCollisions();
     }
     /*function for checking the collisions*/
 
@@ -97,6 +98,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        //gem.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -157,6 +159,7 @@ var Engine = (function(global) {
             enemy.render();
         });
         player.render();
+        gem.render();
         //debugger;
     }
 
@@ -182,6 +185,11 @@ var Engine = (function(global) {
         'images/char-cat-girl.png',
         'images/char-horn-girl.png',
         'images/char-pink-girl.png',
+        'images/Gem Blue.png',
+        'images/Gem Green.png',
+        'images/Gem Orange.png',
+        'images/Star.png',
+        'images/Heart.png'
     ]);
     Resources.onReady(init);
 

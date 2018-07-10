@@ -2,9 +2,11 @@
 let tileWidth = 76;
 let tileHeight = 25;
 let score = 0;
+let value = 0;
 let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
-const enemySprite = 'images/enemy-bug.png'
+const enemySprite = 'images/enemy-bug.png';
+const gemSprite = ['Gem Blue', 'Gem Green','Gem Orange', 'Star'];
 const players = document.querySelector(".players");
 const allPlayer = document.getElementsByClassName("playerList");
 let timer = document.querySelector(".timer");
@@ -61,7 +63,7 @@ class Player extends arcade{
   update(dt) {
     if(this.y <= 0) {
       this.y = 320;
-      score += 5;
+      score += 1;
     }
     scoreContainer.textContent = score;
     arcadeFeatures.starRating();
@@ -88,6 +90,38 @@ class Player extends arcade{
     }
   }
 }
+
+class Gem extends arcade{
+  constructor(x, y, spriteImg){
+    super(x = tileWidth * Math.floor(Math.random() * 4), y = tileHeight * Math.floor(Math.random() * 6), spriteImg = `images/${gemSprite[value]}.png`);
+    this.random = Math.floor(Math.random() * 3) + 1;
+  }
+
+  update() {
+    switch(score){
+      case 10:
+        value++;
+        break;
+      case 25:
+        value++;
+        break;
+      case 50:
+        value++;
+    }
+    this.x = tileWidth * Math.floor(Math.random() * 4);
+    this.y = tileHeight * Math.floor(Math.random() * 5);
+    this.sprite = `images/${gemSprite[value]}.png`
+  }
+  checkCollisions(){
+    let xPos = player.x >= this.x  -50 && player.x <= this.x + 50;
+    let yPos = player.y >= this.y  -20 && player.y <= this.y + 20;
+    if(xPos && yPos){
+      this.update();
+      score += value + 1;
+    }
+  }
+}
+
 
 class ArcadeFeatures {
   constructor(){}
@@ -162,6 +196,7 @@ class ArcadeFeatures {
 
 let allEnemies = [];
 let player = new Player();
+let gem = new Gem(x = tileWidth * Math.floor(Math.random() * 5), y = 70, spriteImg = `images/${gemSprite[value]}.png`);
 const arcadeFeatures = new ArcadeFeatures();
 arcadeFeatures.addEnemies();
 
