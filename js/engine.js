@@ -83,6 +83,7 @@ var Engine = (function(global) {
             enemy.checkCollisions();
         });
         gem.checkCollisions();
+        life.checkCollisions();
     }
     /*function for checking the collisions*/
 
@@ -160,7 +161,9 @@ var Engine = (function(global) {
         });
         player.render();
         gem.render();
-        //debugger;
+        if (score>5){
+            life.render();
+        }
     }
 
     /* This function does nothing but it could have been a good place to

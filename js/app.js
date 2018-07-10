@@ -3,10 +3,12 @@ let tileWidth = 76;
 let tileHeight = 25;
 let score = 0;
 let value = 0;
+let lifeVal = 0;
 let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png';
 const gemSprite = ['Gem Blue', 'Gem Green','Gem Orange', 'Star'];
+const lifeSprite = 'images/Heart.png';
 const players = document.querySelector(".players");
 const allPlayer = document.getElementsByClassName("playerList");
 let timer = document.querySelector(".timer");
@@ -14,6 +16,7 @@ let sec = 0;
 let min = 0;
 let timerInterval;
 let scoreContainer = document.querySelector(".score");
+let lifeContainer = document.querySelector(".life");
 let playerlists = [...allPlayer];
 //Array for Star Rating
 const stars = document.querySelectorAll(".fa-star");
@@ -65,8 +68,9 @@ class Player extends arcade{
       this.y = 320;
       score += 1;
     }
-    scoreContainer.textContent = score;
+    arcadeFeatures.scoreDisplay();
     arcadeFeatures.starRating();
+    arcadeFeatures.lifeDisplay();
   }
 
   handleInput(keyCode) {
@@ -118,6 +122,26 @@ class Gem extends arcade{
     if(xPos && yPos){
       this.update();
       score += value + 1;
+    }
+  }
+}
+
+class Life extends arcade{
+  constructor(x, y, spriteImg){
+    super(x = tileWidth * Math.floor(Math.random() * 4), y = tileHeight * Math.floor(Math.random() * 6), spriteImg = lifeSprite);
+    this.random = Math.floor(Math.random() * 3) + 1;
+  }
+
+  update() {
+    this.x = tileWidth * Math.floor(Math.random() * 4);
+    this.y = tileHeight * Math.floor(Math.random() * 5);
+  }
+  checkCollisions(){
+    let xPos = player.x >= this.x  -50 && player.x <= this.x + 50;
+    let yPos = player.y >= this.y  -20 && player.y <= this.y + 20;
+    if(xPos && yPos){
+      this.update();
+      lifeVal++;
     }
   }
 }
@@ -190,6 +214,12 @@ class ArcadeFeatures {
       }
     }
   }
+  lifeDisplay(){
+    lifeContainer.textContent = lifeVal;
+  }
+  scoreDisplay(){
+    scoreContainer.textContent = score;
+  }
   reset(){
     allEnemies = [];
     this.addEnemies();
@@ -198,6 +228,8 @@ class ArcadeFeatures {
     player.x = 141;
     player.y = 305;
     score = 0;
+    value = 0;
+    lifeVal = 0;
     for(const star of stars){
       if(star.classList.contains("active")){
         star.classList.remove("active");
@@ -208,7 +240,8 @@ class ArcadeFeatures {
 
 let allEnemies = [];
 let player = new Player();
-let gem = new Gem(x = tileWidth * Math.floor(Math.random() * 5), y = 70, spriteImg = `images/${gemSprite[value]}.png`);
+let gem = new Gem();
+let life = new Life();
 const arcadeFeatures = new ArcadeFeatures();
 arcadeFeatures.addEnemies();
 
