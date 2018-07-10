@@ -1,48 +1,87 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
 body {
-    text-align: center;
-}
-ul {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-li {
+
+body {
+    font-family: 'Coda', cursive;
+}
+
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.arcadeGame {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     width: 600px;
 	margin: 0 auto;
 }
-#players {
+/*Styles for Player List*/
+.players {
 	padding: 0;
 	margin: 0;
+    display: inline-block;
 }
-#players li.playerList {
+.players li.playerList {
 	padding: 0;
 	margin: 0;
 	background: #ccc;
 	border-radius: 90px 90px 90px 90px;
 	padding: 10px;
 	margin-right: 10px;
+    display: inline-block;
+    list-style: none;
 }
-#players li.playerList.selected{
+.players li.playerList.selected{
 	background: red;
 }
-.gameDetails{
-	width: 100%;
+/*Styles for the Score Panel*/
+.score-panel {
+    text-align: left;
+    width: 90%;
+    margin-bottom: 10px;
+    font-size: 1.3em;
 }
-.score {
-    width: 15%;
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 0 0 15px;
 }
-.timer {
-    width: 30%;
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+    color: #02ccba;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.score-panel .timer {
+    float: right;
+    margin-right: 15px;
+}
+
+.score-panel .errorMsg {
+    color: red;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
 }

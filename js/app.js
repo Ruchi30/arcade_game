@@ -5,13 +5,13 @@ let score = 0;
 let clickCounter = 0;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png'
-const players = document.getElementById("players");
+const players = document.querySelector(".players");
 const allPlayer = document.getElementsByClassName("playerList");
-let timer = document.querySelector("#timer");
+let timer = document.querySelector(".timer");
 let sec = 0;
 let min = 0;
 let timerInterval;
-let scoreContainer = document.querySelector("#score");
+let scoreContainer = document.querySelector(".score");
 let playerlists = [...allPlayer];
 
 
@@ -103,12 +103,12 @@ class ArcadeFeatures {
         sec = 0;
         min++;
       }
-      timer.innerHTML = `${min} min & ${sec} sec`;
+      timer.innerHTML = `${min} Minute and ${sec} Second`;
     },1000);
   }
   resetTimer(){
     clearInterval(timerInterval);
-    timer.textContent = "0 min & 0 sec";
+    timer.textContent = "0 Minute and 0 Second";
     sec = 0;
     min = 0;
   }
@@ -127,7 +127,6 @@ let allEnemies = [];
 let player = new Player();
 const arcadeFeatures = new ArcadeFeatures();
 arcadeFeatures.addEnemies();
-timer.textContent = "0 min & 0 sec";
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {

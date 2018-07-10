@@ -26,7 +26,7 @@ var Engine = (function(global) {
 
     canvas.width = 379;
     canvas.height = 454;
-    doc.body.appendChild(canvas);
+    doc.querySelector(".container").appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -153,9 +153,9 @@ var Engine = (function(global) {
          * the render function you have defined.
          */
 
-          allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function(enemy) {
             enemy.render();
-          });
+        });
         player.render();
         //debugger;
     }
