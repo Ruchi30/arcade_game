@@ -126,8 +126,20 @@ class Gem extends arcade{
 class ArcadeFeatures {
   constructor(){}
   addEnemies(){
-    const enemiesX = [0, 0, 0];
-    const enemiesY = [35, 90, 150];
+    let enemiesX = [];
+    let enemiesY = [];
+    if(score <= 5){
+      enemiesX = [0, 0, 0];
+      enemiesY = [35, 90, 150];
+    }
+    else if(score > 5 && score <= 15){
+      enemiesX = [0, 0, 0, 0, 0];
+      enemiesY = [35, 66, 97, 128, 159];
+    }
+    else if(score > 15){
+      enemiesX = [0, 0, 0, 0, 0, 0, 0];
+      enemiesY = [35, 57, 79, 101, 123, 140, 157];
+    }
     for(var i=0; i <= enemiesX.length; i++){
       allEnemies.push(new Enemy(enemiesX[i], enemiesY[i]));
     }
