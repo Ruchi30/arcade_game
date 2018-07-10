@@ -17,6 +17,7 @@ let min = 0;
 let timerInterval;
 let scoreContainer = document.querySelector(".score");
 let lifeContainer = document.querySelector(".life");
+let refresh = document.querySelector(".restart");
 let playerlists = [...allPlayer];
 //Array for Star Rating
 const stars = document.querySelectorAll(".fa-star");
@@ -266,5 +267,8 @@ playerlists.forEach(function(playerlist) {
     playerlist.nextElementSibling.classList.remove("selected");
   });
 });
+refresh.addEventListener("click",function(){
+  arcadeFeatures.reset();
+})
 
 
