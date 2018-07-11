@@ -226,7 +226,7 @@ body {
 /** media queries*/
 @media (min-width: 680px) {
     .modal-content {
-        width: 500px;
+        width: 550px;
     }
 
     .players {
