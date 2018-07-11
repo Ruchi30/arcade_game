@@ -1,6 +1,32 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game Project
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## What is the Arcade Game
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+This is a slightly more modern version of Frogger, this is a minimalist 2D game in which the object is to make it to the water without colliding into evil enemy bugs
+
+## How to play the game
+
+Use left-right and up-down arrow keys to move the player from block to block. When you reach the water, you win the game and the game will start over. If you run into an enemy bug, you will die and the game will start over. THe enemy bugs are running across the screen at random locations and random speeds. Collect gems before reaching the water for bonus points and life.
+
+## Instructions
+
+* Move the Player
+* collect the gems & life
+* Touch the water
+* Stop the game any time with Play / Pause button
+
+## Scoring
+
+* Blue gem value = 5 point
+* Green gem value = 10 point
+* Orange gem value = 15 point
+* Star gem value = 20 point
+* Reach the water and receive 5  point
+* Heart gem value = 1 life
+* Star gem value = 20
+
+## Community resources used to improve game experience
+
+* Font Awesome for icons from https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+* Coda family font from https://fonts.googleapis.com/css?family=Coda
+* Mobile Browser check from https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
