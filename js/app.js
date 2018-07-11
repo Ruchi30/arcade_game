@@ -119,16 +119,6 @@ class Gem extends arcade{
   }
   //@description: function for updating the player score after gem collection and changing gem position
   update() {
-    switch(score){
-      case 5:
-        value++;
-        break;
-      case 10:
-        value++;
-        break;
-      case 15:
-        value++;
-    }
     if(score <= 10) {
       value = 1;
     }
