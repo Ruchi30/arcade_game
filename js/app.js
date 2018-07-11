@@ -10,7 +10,7 @@ let min = 0;
 let timerInterval;
 let playerSprite = 'images/char-boy.png';
 const enemySprite = 'images/enemy-bug.png';
-const gemSprite = ['Gem Blue', 'Gem Green','Gem Orange', 'Star'];
+const gemSprite = ['Gem-Blue', 'Gem-Green','Gem-Orange', 'Star'];
 const lifeSprite = 'images/Heart.png';
 //html selector variables
 const players = document.querySelector(".players");
@@ -73,14 +73,14 @@ class Enemy extends arcade{
 class Player extends arcade{
   //@constructor:constructor for player
   constructor(x, y, spriteImg){
-    super(x = 140, y = 308, spriteImg = playerSprite);
+    super(x = 152, y = 308, spriteImg = playerSprite);
     console.log(this.sprite);
   }
   //@description: function for all updates of player
   update(dt) {
     if(this.y <= 0) {
       this.y = 320;
-      score += 1;
+      score += 5;
     }
     arcadeFeatures.scoreDisplay();
     arcadeFeatures.starRating();
@@ -120,14 +120,26 @@ class Gem extends arcade{
   //@description: function for updating the player score after gem collection and changing gem position
   update() {
     switch(score){
+      case 5:
+        value++;
+        break;
       case 10:
         value++;
         break;
-      case 25:
+      case 15:
         value++;
-        break;
-      case 50:
-        value++;
+    }
+    if(score <= 10) {
+      value = 1;
+    }
+    else if(score > 10 && score <= 20) {
+      value = 2;
+    }
+    else if(score > 20 && score <= 30) {
+      value = 3;
+    }
+    else if(score > 10 && score <= 40) {
+      value = 4;
     }
     this.x = tileWidth * Math.floor(Math.random() * 4);
     this.y = tileHeight * Math.floor(Math.random() * 5);
@@ -139,7 +151,7 @@ class Gem extends arcade{
     let yPos = player.y >= this.y  -20 && player.y <= this.y + 20;
     if(xPos && yPos){
       this.update();
-      score += value + 1;
+      score += (value + 1)*5;
     }
   }
 }
@@ -200,7 +212,7 @@ class ArcadeFeatures {
         sec = 0;
         min++;
       }
-      timer.innerHTML = `${min} Minu & ${sec} Sec`;
+      timer.innerHTML = `${min} Min & ${sec} Sec`;
     },1000);
   }
   //@description: function for stopping the timer
@@ -328,13 +340,12 @@ document.addEventListener('keyup', function(e) {
 });
 //@description: function for selecting the player from player list
 playerlists.forEach(function(playerlist) {
-  playerlist.classList.remove("selected");
-  playerlist.addEventListener("click", function(e){
-    playerSprite = e.target.getAttribute('src');
+  playerlist.addEventListener("click", function(){
+    let selectedPlayer = document.querySelector(".selected")
+    playerSprite =  `images/${this.type}.png`;
     player.sprite = playerSprite;
+    selectedPlayer.classList.remove("selected");
     playerlist.classList.add("selected");
-    playerlist.previousElementSibling.classList.remove("selected");
-    playerlist.nextElementSibling.classList.remove("selected");
   });
 });
 //@description: function for restarting the game on restart button click

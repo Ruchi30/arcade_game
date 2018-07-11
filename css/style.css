@@ -47,6 +47,7 @@ body {
     display: inline-block;
     list-style: none;
     width: calc((100% - 70px) / 4);
+    cursor: pointer;
 }
 .players li.playerList:last-of-type {
     margin-right: 0;
@@ -55,7 +56,7 @@ body {
     max-width: 100%;
  }
 .players li.playerList.selected{
-	background: red;
+	background: rgb(0,255,200);
 }
 /*Styles for the Score Panel*/
 .score-panel {
