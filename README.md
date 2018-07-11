@@ -6,7 +6,7 @@ This is a slightly more modern version of Frogger, this is a minimalist 2D game 
 
 ## How to play the game
 
-Use left-right and up-down arrow keys to move the player from block to block. When you reach the water, you win the game and the game will start over. If you run into an enemy bug, you will die and the game will start over. THe enemy bugs are running across the screen at random locations and random speeds. Collect gems before reaching the water for bonus points and life.
+Use left-right and up-down arrow keys to move the player from block to block. When you reach the water, you win the game and the player posion will again reset. If you run into an enemy bug, you will die and the game will start over. THe enemy bugs are running across the screen at random locations and random speeds. Collect gems before reaching the water for bonus points and life.
 
 ## Instructions
 
