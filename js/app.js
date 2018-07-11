@@ -84,9 +84,9 @@ class Player extends arcade{
     if(this.y <= 0) {
       this.y = 320;
       score += 5;
+      arcadeFeatures.starRating();
     }
     arcadeFeatures.scoreDisplay();
-    arcadeFeatures.starRating();
     arcadeFeatures.lifeDisplay();
   }
   //@description: function for moving the player
@@ -221,31 +221,34 @@ class ArcadeFeatures {
   }
   //@description: function for rating the player
   starRating(){
-    let count = (min*60 + sec) / score;
-    if(count > -1 && count < 5){
-      for(let i= 0; i < 3; i++){
-        if(i >= 0){
-          stars[i].classList.add("active");
+    if(score > 0){
+      let count =  score / (min + (sec/60));
+      console.log(count);
+      if(count > 200){
+        for(let i= 0; i < 3; i++){
+          if(i >= 0){
+            stars[i].classList.add("active");
+          }
         }
       }
-    }
-    else if(count >= 5 && count < 15 ){
-      for(let i= 0; i < 3; i++){
-        if(i > 0){
-          stars[i].classList.add("active");
-        }
-        else {
-          stars[i].classList.remove("active");
+      else if(count >= 100 && count < 200 ){
+        for(let i= 0; i < 3; i++){
+          if(i > 0){
+            stars[i].classList.add("active");
+          }
+          else {
+            stars[i].classList.remove("active");
+          }
         }
       }
-    }
-    else if(count <= 15){
-      for(let i= 0; i < 3; i++){
-        if(i > 1){
-          stars[i].classList.add("active");
-        }
-        else {
-          stars[i].classList.remove("active");
+      else if(count < 100){
+        for(let i= 0; i < 3; i++){
+          if(i > 1){
+            stars[i].classList.add("active");
+          }
+          else {
+            stars[i].classList.remove("active");
+          }
         }
       }
     }
