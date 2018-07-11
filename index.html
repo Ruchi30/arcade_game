@@ -25,10 +25,13 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
         	Life: <span class="life">0</span>
-            <div class="restart">
+	        <div class="help" title="Play Guideline">
+	          <i class="fas fa-question"></i>
+	        </div>
+            <div class="restart" title="Restart Game">
                 <i class="fa fa-sync-alt"></i>
             </div>
-            <div class="play">
+            <div class="play" title="Stop / Continue Game">
             	<i class="fas fa-pause-circle btnPlay"></i>
             </div>
             <div class="timer">
@@ -42,6 +45,30 @@
 		<button class="right"><i class="fas fa-arrow-alt-circle-right right"></i></button><br>
 		<button class="down"><i class="fas fa-arrow-alt-circle-down down"></i></button>
 	</div>
+	<div class="modal instructions">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section class="summary">
+            <h1> Arcade Game Guideline  </h1>
+              <h2>How to Play</h2>
+		      <p>Use UP, DOWN, LEFT and RIGHT keys for moving the player. Avoid the bug. Player will get rating according to time spent and score</p>
+              <h2>Instructions</h2>
+		      <ul >
+		      	<li>Touch the water</li>
+		      	<li>collect the gems</li>
+		      	<li>collect the life</li>
+		      </ul>
+		      <h2>Point & Life details</h2>
+		      <ul>
+		      	<li><img src="images/Gem-Blue.png"/> Blue Gem: 5 point (appear from the starting of game)</li>
+		      	<li><img src="images/Gem-Green.png"/> Green Gem: 10 point (appear when score is more than 10)</li>
+		      	<li><img src="images/Gem-Orange.png"/> Orange Gem: 15 point (appear when score is more than 20)</li>
+		      	<li><img src="images/Star.png"/> Star: 20 point (appear when score is more than 30)</li>
+		      	<li><img src="images/Heart.png"/> Heart: 1 Life (appear when score is more than 15)</li>
+		      </ul>
+            </section>
+        </div>
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>

@@ -20,6 +20,9 @@ let scoreContainer = document.querySelector(".score");
 let lifeContainer = document.querySelector(".life");
 let refresh = document.querySelector(".restart");
 let btnPlay = document.querySelector(".btnPlay");
+const btnHelp = document.querySelector(".help");
+const instructions = document.querySelector(".instructions");
+const close = document.querySelector(".close");
 const allPlayer = document.getElementsByClassName("playerList");
 let playerlists = [...allPlayer];
 const stars = document.querySelectorAll(".fa-star");
@@ -120,16 +123,16 @@ class Gem extends arcade{
   //@description: function for updating the player score after gem collection and changing gem position
   update() {
     if(score <= 10) {
-      value = 1;
+      value = 0;
     }
     else if(score > 10 && score <= 20) {
-      value = 2;
+      value = 1;
     }
     else if(score > 20 && score <= 30) {
-      value = 3;
+      value = 2;
     }
-    else if(score > 10 && score <= 40) {
-      value = 4;
+    else if(score > 30) {
+      value = 3;
     }
     this.x = tileWidth * Math.floor(Math.random() * 4);
     this.y = tileHeight * Math.floor(Math.random() * 5);
@@ -344,6 +347,17 @@ refresh.addEventListener("click",function(){
 });
 //@description: function for play and pause the game
 btnPlay.addEventListener("click",arcadeFeatures.stopGame);
+//@description: function for play and pause the game
+btnHelp.addEventListener("click",function(){
+  instructions.style.display = "block";
+  closeModal();
+});
+//for closing the modal box
+function closeModal(){
+  close.addEventListener("click", function(e){
+    instructions.style.display = "none";
+  });
+}
 //@description: function for adding events on mobile button click
 btnMobile.addEventListener("click",function(e){
   if (e.target.classList.contains("up")) {

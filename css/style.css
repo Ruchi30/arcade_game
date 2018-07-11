@@ -86,6 +86,11 @@ body {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    margin-right: 10px;
+}
+.score-panel .help {
+    float: right;
+    cursor: pointer;
 }
 .score-panel .play {
     float: right;
@@ -129,6 +134,94 @@ body {
 .hidden {
 	display: none;
 }
+
+/* Styles for the modal box*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 150px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.summary {
+    text-align: center;
+    font-size: 1em;
+}
+
+.summary h1{
+    font-size: 1.4em;
+}
+
+.summary h2{
+    margin: 10px 0 0 0;
+    color: #02ccba;
+    font-size: 1.2em;
+}
+
+.summary ul {
+    margin: 0;
+    padding: 0;
+}
+
+.summary li {
+    list-style: none;
+    padding:0;
+    line-height: 20px;
+    position: relative;
+}
+.summary li img {
+	max-width: 20px;
+	position: relative;
+	top: 7px;
+}
+
+.finalMoves, .finalTime {
+    font-weight: 600;
+}
+
+.btnmodal {
+    border-radius: 5px 5px 5px 5px;
+    background: #311432;
+    color: #fff;
+    padding: 10px 12px;
+    font-size: 24px;
+    border: none;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    cursor: pointer;
+}
+
+.btnmodal:hover {
+    background: #784b84;
+}
+
 
 /** media queries*/
 @media (min-width: 680px) {
