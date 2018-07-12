@@ -108,7 +108,7 @@ class Player extends arcade{
       if(clickCounter===1){
         arcadeFeatures.startTimer();
       }
-      arcadeFeatures.startGame()
+      arcadeFeatures.startGame();
     }
   }
 }
@@ -136,7 +136,7 @@ class Gem extends arcade{
     }
     this.x = tileWidth * Math.floor(Math.random() * 4);
     this.y = tileHeight * Math.floor(Math.random() * 5);
-    this.sprite = `images/${gemSprite[value]}.png`
+    this.sprite = `images/${gemSprite[value]}.png`;
   }
   //@description: function for checking the collision between player and gem
   checkCollisions(){
@@ -337,7 +337,7 @@ document.addEventListener('keyup', function(e) {
 //@description: function for selecting the player from player list
 playerlists.forEach(function(playerlist) {
   playerlist.addEventListener("click", function(){
-    let selectedPlayer = document.querySelector(".selected")
+    let selectedPlayer = document.querySelector(".selected");
     playerSprite =  `images/${this.type}.png`;
     player.sprite = playerSprite;
     selectedPlayer.classList.remove("selected");
